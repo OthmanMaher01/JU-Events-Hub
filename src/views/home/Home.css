@@ -1,0 +1,11 @@
+.panner{
+    position: relative;;
+    top:150px;
+}
+.panner p{
+    padding-left: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80px;
+    font-weight: bold;
+    color: #146794;
+}
