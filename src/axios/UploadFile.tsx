@@ -12,8 +12,9 @@ async function UploadFile(fileName:string,file:File|undefined){
         },
           }
         )
+        return response
     }catch(error){
-
+        return error
     }
 }
 export default UploadFile

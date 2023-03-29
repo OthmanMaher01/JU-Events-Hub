@@ -5,7 +5,7 @@ async function DeleteFile(fileId:number){
         const response =await axiosPrivate.post("/file/"+fileId+"/delete")
         return response
     }catch(error){
-
+        return error
     }
 }
 export default DeleteFile

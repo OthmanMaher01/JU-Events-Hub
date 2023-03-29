@@ -9,6 +9,7 @@ function Register() {
     const [firstName ,setFirstName]= useState('')
     const [lastName ,setLastName]= useState('')
     const navigate = useNavigate();
+    const [errorMessage ,setErrorMessage]= useState('')
 
   return (
    
@@ -19,6 +20,9 @@ function Register() {
       <div className="title">
           CREATE ACCOUNT
       </div>
+      {errorMessage!=''&&<div className="error">
+                {errorMessage}
+            </div>}
       <div className="row">
           <div className="col">
               <div className="textboxtop">
@@ -55,13 +59,16 @@ function Register() {
          </div>
       <div className="button"  >
           <input type="button" value="SIGN UP" onClick={async ()=>{
-                    await RegisterRequest(firstName+" "+lastName,email,password)
-                    navigate("/login")}
+                    try{
+                        const response= await RegisterRequest(firstName+" "+lastName,email,password)
+                        navigate("/login")
+                    }catch(error:any){
+                        setErrorMessage(error.response.data.message)
+                    }
+                    }
                 }/>
       </div>
-      {/* <div className="error" v-if="!isValid">
-          Please Enter A Valid Data
-      </div> */}
+
   </div>
   <Curve></Curve>
 </div>

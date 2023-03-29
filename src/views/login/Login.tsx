@@ -4,9 +4,11 @@ import { useState } from 'react';
 import LoginRequest from "../../axios/LoginRequest"
 import { useNavigate } from "react-router-dom";
 import useAuthStore from '../../stores/AuthStore';
+import { AxiosError } from 'axios';
 function Login() {
     const navigate = useNavigate();
     const [email ,setEmail]= useState('')
+    const [errorMessage ,setErrorMessage]= useState('')
     const [password ,setPassword]= useState('')
     const setIsLoggedIn= useAuthStore((state)=>state.setIsLoggedIn)
     const isLoggedIn = useAuthStore((state)=>state.isLoggedIn)
@@ -16,6 +18,9 @@ function Login() {
             <div className="title">
                 LOG IN
             </div>
+            {errorMessage!=''&&<div className="error">
+                {errorMessage}
+            </div>}
             <div className="textbox">
                 <input type="text" placeholder="Email"
                  onChange={(event) => {
@@ -39,15 +44,19 @@ function Login() {
             </div>
             <div className="button"  >
                 <input type="submit" value="SIGN IN" onClick={async ()=>{
-                    await LoginRequest(email,password)
-                    setIsLoggedIn(true)
-                    console.log(isLoggedIn)
-                    navigate("/dashboard")}
+                    try{
+                        const response=await LoginRequest(email,password)
+                        console.log(response)
+                        setIsLoggedIn(true)
+                        navigate("/dashboard")
+                    }catch(error:any){
+                        setErrorMessage(error.response.data.message)
+                    }
+                   
+                    }
                 }/>
             </div>
-            {/* <div className="error" v-if="!isValid">
-                Please Enter A Valid Data
-            </div> */}
+         
         </div>
         <Curve></Curve>
       </div>

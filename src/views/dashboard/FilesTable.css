@@ -21,7 +21,7 @@
 }
 .upload-button{
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     padding: 0px 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -69,8 +69,6 @@ input[type=file]::file-selector-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 140px;
-    gap: 10px;
 }
 
 body {
@@ -122,8 +120,26 @@ body {
     padding: 7px;
     margin:6px 20px;
 }
-
-
+.pop-up{
+    position: fixed;
+    right: 20px;
+    top: 120px;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 900;
+    color: white;
+}
+.greenBG{
+    background-color: rgb(62, 199, 62);
+}
+.redBG{
+    background-color: rgb(222, 55, 55);
+}
+tbody{
+    margin: 0px;
+    padding: 0px;
+}
 
 
 
