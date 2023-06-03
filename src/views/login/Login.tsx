@@ -13,52 +13,39 @@ function Login() {
     const setIsLoggedIn= useAuthStore((state)=>state.setIsLoggedIn)
     const isLoggedIn = useAuthStore((state)=>state.isLoggedIn)
   return (
-    <div className="login-page">
-        <div className="login-box">
-            <div className="title">
-                LOG IN
-            </div>
+    <div className="page">
+        <div className="form-box">
+            <div className='form'>
             {errorMessage!=''&&<div className="error">
                 {errorMessage}
             </div>}
-            <div className="textbox">
-                <input type="text" placeholder="Email"
-                 onChange={(event) => {
-                    setEmail(event.target.value);
-                  }}
-                  />
-            </div>
-            <div className="textbox">
-                <input type="password" placeholder="Password"
-                 onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                  />
-            </div>
+            <input type="text" placeholder="Email"
+                onChange={(event) => {
+                setEmail(event.target.value);
+                }}
+                />
+            <input type="password" placeholder="Password"
+                onChange={(event) => {
+                setPassword(event.target.value);
+                }}
+                />
             <div>
-            <span className='dha-span' >Don't have an account ? </span>
-            <span  className='register-span' onClick={()=>navigate("/register")}> Register here</span>
             </div>
-            <div className="spinner-container" v-if="isLoading">
-                <div className="spinner-border text-blue" role="status"/>
-            </div>
-            <div className="button"  >
-                <input type="submit" value="SIGN IN" onClick={async ()=>{
+                <button type="submit" value="SIGN IN" onClick={async ()=>{
                     try{
                         const response=await LoginRequest(email,password)
                         console.log(response)
                         setIsLoggedIn(true)
-                        navigate("/dashboard")
+                        
+                        navigate("/")
                     }catch(error:any){
                         setErrorMessage(error.response.data.message)
                     }
                    
                     }
-                }/>
+                }>LOGIN</button>
             </div>
-         
         </div>
-        <Curve></Curve>
       </div>
   )
 }

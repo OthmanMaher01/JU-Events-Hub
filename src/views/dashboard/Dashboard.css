@@ -1,9 +1,0 @@
-.dashboard{
-    position: relative;
-    width: 100vw;
-    height: cal(100vh - 100px);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-}

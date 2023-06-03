@@ -1,0 +1,50 @@
+body{
+    margin: 0px;
+    
+}
+.page{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #23da42;
+    background-image: linear-gradient(62deg, #242e4d 0%, #897e79 100%);
+}
+input{
+    width: 300px;
+    display: block;
+    margin-top: 10px;
+    height: 30px;
+}
+input::placeholder{
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif; 
+}
+button{
+    display: block;
+    margin-top: 10px;
+    width: 308px;
+    font-family:Georgia, 'Times New Roman', Times, serif; 
+    margin-bottom: 10px;
+    background-color: #00d6b7;
+    height: 30px;
+}
+.form-box{
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    background-color:rgba(143, 143, 143, 0.2);
+    height: 200px;
+    align-items: center;
+    border-top: 2px solid #00d6b7;
+}
+.form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* $green-dark:  #35c3c1; */
+/* $gray:        #8f8f8f; */
+/* $gray-light:  #f5f6f8; */

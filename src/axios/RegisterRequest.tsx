@@ -1,13 +1,13 @@
 import axios from "./Axios";
 
-async function RegisterRequest(userName:string,email:string,password:string){
+async function RegisterEvent(eventName:string,eventDate:string,eventDescription:string){
 
-    const response =await axios.post("/auth/register",{
-        password:password,
-        email:email,
-        userName:userName
+    const response =await axios.post("/event",{
+        name:eventName,
+        date:eventDate,
+        description:eventDescription
     })
     return response
   
 }
-export default RegisterRequest
+export default RegisterEvent

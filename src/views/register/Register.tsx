@@ -1,77 +1,70 @@
 import './Register.css'
 import Curve from ".././general/curve/Curve"
 import { useState } from 'react'
-import RegisterRequest from '../../axios/RegisterRequest'
+import RegisterEvent from '../../axios/RegisterRequest'
 import { useNavigate } from 'react-router-dom'
 function Register() {
-    const [email ,setEmail]= useState('')
-    const [password ,setPassword]= useState('')
-    const [firstName ,setFirstName]= useState('')
-    const [lastName ,setLastName]= useState('')
-    const navigate = useNavigate();
-    const [errorMessage ,setErrorMessage]= useState('')
-
+    const navigate=useNavigate()
+    const [eventName ,setEventName]= useState('')
+    const [eventDate ,setEventDate]= useState('')
+    const [eventDescription ,setEventDescription]= useState('')
+    const register=()=>{
+        RegisterEvent(eventName,eventDate,eventDescription)
+    }
   return (
    
-  <div className="register-page">
-    <div className="signup-box">
-        <div className="atypon-logo">
-        </div>
-      <div className="title">
-          CREATE ACCOUNT
-      </div>
-      {errorMessage!=''&&<div className="error">
-                {errorMessage}
-            </div>}
-      <div className="row">
-          <div className="col">
-              <div className="textboxtop">
-                  <input type="text" placeholder="Firstname"
-                  onChange={(event) => {
-                    setFirstName(event.target.value);
-                  }}/>
-              </div>
-          </div>
-          <div className="col">
-              <div className="textboxtop">
-                  <input type="text" placeholder="Lastname" onChange={(event) => {
-                    setLastName(event.target.value);
-                  }} />
-              </div>
-          </div>
-      </div>
-      <div className="textbox">
-          <input type="text" placeholder="Email"  onChange={(event) => {
-                    setEmail(event.target.value);
-                  }}/>
-      </div>
-      <div className="textbox">
-          <input type="password" placeholder="Password" onChange={(event) => {
-                    setPassword(event.target.value);
-                  }} />
-      </div>
-       <div>
-          <span className='dha-span'>Have an account ? </span>
-          <span className='login-span' onClick={()=>navigate("/login")}> Login here</span>
-      </div>
-      <div className="spinner-container" v-if="isLoading">
-         <div className="spinner-border text-blue" role="status"/>
-         </div>
-      <div className="button"  >
-          <input type="button" value="SIGN UP" onClick={async ()=>{
-                    try{
-                        const response= await RegisterRequest(firstName+" "+lastName,email,password)
-                        navigate("/login")
-                    }catch(error:any){
-                        setErrorMessage(error.response.data.message)
-                    }
-                    }
-                }/>
-      </div>
+    <section id="mu-contact">
+    <div className="container">
+        <div className="row">
+            <div className="col-md-12">
+                <div className="mu-contact-area">
+                    <h2>Register an event</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                    <div className="mu-contact-content">
+                        <div className="row">
 
-  </div>
-  <Curve></Curve>
-</div>
+                            <div className="col-md-12">
+                                <div className="mu-contact-form-area">
+                                    <div id="form-messages"></div>
+                                    <form id="ajax-contact" method="post" className="mu-contact-form">
+
+                                        <div className="form-group">                
+                                            <input type="text" className="form-control" placeholder="Event Name" id="subject" name="subject" required
+                                            onChange={(event) => {
+                                                setEventName(event.target.value);
+                                                }}
+                                                 />
+                                        </div>
+                                        <div className="form-group">                
+                                            <input type="text" className="form-control" placeholder="Event Date" id="subject" name="subject" required
+                                             onChange={(event) => {
+                                                setEventDate(event.target.value);
+                                                }}/>
+                                        </div>
+                                        <div className="form-group">
+                                            <textarea className="form-control" placeholder="Event Description" id="message" name="message" required
+                                             onChange={(event) => {
+                                                setEventDescription(event.target.value);
+                                                }}></textarea>
+                                        </div>
+                                        <button  className="mu-send-msg-btn register-button" onClick={()=> 
+                                        {
+                                            
+                                            register()
+                                            navigate("/")
+                                        }
+                                        }>Register</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
   )
 }
